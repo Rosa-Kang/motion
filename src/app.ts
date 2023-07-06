@@ -3,12 +3,12 @@ import { ImageComponent } from "./components/item/image.js";
 import { NoteComponent } from "./components/item/note.js";
 import { TodoComponent } from "./components/item/todo.js";
 import { VideoComponent } from "./components/item/video.js";
-import { Composable, PageComponent } from "./components/page/page.js";// 확장명도 함께 호출해야함.
+import { Composable, PageComponent, PageItemComponent } from "./components/page/page.js";// 확장명도 함께 호출해야함.
 
 class App{
     private readonly page: Component & Composable;
     constructor(appRoot: HTMLElement) {
-        this.page = new PageComponent();
+        this.page = new PageComponent(PageItemComponent);
         this.page.attachTo(appRoot);
 
         const image = new ImageComponent('picture that AI chose randomly', 'https://picsum.photos/600/300');
