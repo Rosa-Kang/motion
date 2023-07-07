@@ -1,42 +1,51 @@
-import { Component } from './../component';
-import { BaseComponent } from "../component";
-import { Composable } from "../page/page";
+import { Composable } from '../page/page.js';
+import { BaseComponent, Component } from './../component.js';
 
 type OnCloseListener = () => void;
 type OnSubmitListener = () => void;
 
-export class InputDialog extends BaseComponent<HTMLElement> implements Composable{
-    closeListener?: OnCloseListener;
-    submitListener?: OnSubmitListener;
+//규격을 지정할 때: interface
+export interface MediaData {
+  readonly title: string;
+  readonly url: string;
+}
 
-    constructor() {
-        super(`<section class="dialog">
-                <button class="close">&times;</button>
-                <div id="dialog__body"></div>
-                <button class="dialog__submit">ADD</button>
-            </section>`);
-        
-        const closeBtn = this.element.querySelector('.close')! as HTMLElement;
-        closeBtn.onclick=()=> {
-            this.closeListener && this.closeListener;
-        }
+export interface TextData {
+  readonly title: string;
+  readonly body: string;
+}
 
-        const submitBtn = this.element.querySelector('.dialog__submit')! as HTMLElement;
-        submitBtn.onclick=()=> {
-            this.submitListener && this.submitListener;
-        }
+export class InputDialog extends BaseComponent<HTMLElement> implements Composable {
+  closeListener?: OnCloseListener;
+  submitListener?: OnSubmitListener;
 
-        setOnCloseListener(listener: OnCloseListener) {
-                this.closeListener = listener;
-        }
+  constructor() {
+    super(`<dialog class="dialog">
+          <div class="dialog__container">
+            <button class="close">&times;</button>
+            <div id="dialog__body"></div>
+            <button class="dialog__submit">ADD</button>
+          </div>
+        </dialog>`);
+    const closeBtn = this.element.querySelector('.close')! as HTMLElement;
+    closeBtn.onclick = () => {
+      this.closeListener && this.closeListener();
+    };
 
-        setOnSubmitListener(listener: OnSubmitListener) {
-            this.submitListener = listener;
-        }
+    const submitBtn = this.element.querySelector('.dialog__submit')! as HTMLElement;
+    submitBtn.onclick = () => {
+      this.submitListener && this.submitListener();
+    };
+  }
 
-        addChild(child:Component) {
-            const body = this.element.querySelector('#dialog__body')! as HTMLElement;
-            child.attachTo(body);
-        }
-    }
+  setOnCloseListener(listener: OnCloseListener) {
+    this.closeListener = listener;
+  }
+  setOnSubmitListener(listener: OnSubmitListener) {
+    this.submitListener = listener;
+  }
+  addChild(child: Component) {
+    const body = this.element.querySelector('#dialog__body')! as HTMLElement;
+    child.attachTo(body);
+  }
 }
