@@ -75,7 +75,10 @@ export class PageItemComponent extends BaseComponent<HTMLElement> implements Sec
     }
 }
 
-export class PageComponent extends BaseComponent<HTMLUListElement> {
+export class PageComponent extends BaseComponent<HTMLUListElement> implements Composable{
+    private dragTarget?: SectionContainer;
+    private dropTarget?: SectionContainer;  
+
     constructor(private pageItemConstructor: SectionContainerConstructor) {
         super(`<ul class="page"></ul>`);
 
@@ -90,7 +93,13 @@ export class PageComponent extends BaseComponent<HTMLUListElement> {
     }
     onDrop(e: DragEvent){
         e.preventDefault();
-        console.log('onDrop')
+        if (!this.dropTarget) {
+            return;
+        }
+        if (this.dragTarget && this.dragTarget !== this.dropTarget) {
+            this.dragTarget.removeFrom(this.element);
+            this.dropTarget.attach(this.dragTarget, 'beforebegin');
+        }
     }
 
     addChild(section: Component) {
@@ -101,7 +110,22 @@ export class PageComponent extends BaseComponent<HTMLUListElement> {
             item.removeFrom(this.element);
         });
         item.setOnDragStateListener((target:SectionContainer, state:DragState) => {
-            console.log(target, state);
+            switch (state) {
+                case 'start':
+                    this.dragTarget = target;
+                    break;
+                    case 'stop':
+                    this.dragTarget = undefined;
+                    break;
+                    case 'enter':
+                    this.dragTarget = target;
+                    break;
+                    case 'leave':
+                    this.dragTarget = undefined;
+                    break;
+                default:
+                    throw new Error(`Unsupported state: ${state}`);
+            }
         })
     }
 }
