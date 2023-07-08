@@ -41,34 +41,20 @@ class App{
             TextSectionInput,
             (input: TextSectionInput) => new TodoComponent(input.title, input.body)
         );
+      
+          // For demo :)
+    this.page.addChild(new ImageComponent('Image Title', 'https://picsum.photos/800/400'));
+    this.page.addChild(new VideoComponent('Video Title', 'https://youtu.be/D7cwvvA7cP0'));
+    this.page.addChild(new NoteComponent('Note Title', "Don't forget to code your dream"));
+    this.page.addChild(new TodoComponent('Todo Title', 'TypeScript Course!'));
+    this.page.addChild(new ImageComponent('Image Title', 'https://picsum.photos/800/400'));
+    this.page.addChild(new VideoComponent('Video Title', 'https://youtu.be/D7cwvvA7cP0'));
+    this.page.addChild(new NoteComponent('Note Title', "Don't forget to code your dream"));
+    this.page.addChild(new TodoComponent('Todo Title', 'TypeScript Course!'));
 
 
     }
 
-// private bindElementToDialog<T extends (MediaData | TextData) & Component>(selector: string,
-//         InputComponent: InputComponentConstructor<T>,
-//         makeSection:(input: T) => Component
-//         ) {
-//             const element = document.querySelector(selector)! as HTMLButtonElement;
-//     element.addEventListener('click', () => {
-//         const dialog = new InputDialog();
-//         const inputSection = new InputComponent();
-
-//         dialog.addChild(inputSection);
-//         dialog.attachTo(this.dialogRoot);
-
-//         dialog.setOnCloseListener(() => {
-//             dialog.removeFrom(this.dialogRoot);
-//         });
-
-//         dialog.setOnSubmitListener(() => {
-//             const image = makeSection(input);
-//             this.page.addChild(image);
-//             dialog.removeFrom(this.dialogRoot);
-//         });
-
-//     });
-//     }
     private bindElementToDialog<T extends (MediaData | TextData) & Component>(
     selector: string,
     InputComponent: InputComponentConstructor<T>,
