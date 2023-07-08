@@ -100,6 +100,8 @@ export class PageComponent extends BaseComponent<HTMLUListElement> {
         item.setOnCloseListener(() => {
             item.removeFrom(this.element);
         });
-
+        item.setOnDragStateListener((target:SectionContainer, state:DragState) => {
+            console.log(target, state);
+        })
     }
 }
