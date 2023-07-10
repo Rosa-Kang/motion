@@ -8,9 +8,12 @@
 
 
 # 1. Project Outlook
+![simple outlook](https://github.com/Rosa-Kang/motion/assets/49248131/7ef53c39-7e1d-4c49-a728-4d22ffd46fb3)
 
 
 # 2. Project Diagram
+![diagram](https://github.com/Rosa-Kang/motion/assets/49248131/4207d596-3a3d-4267-87fe-c49a230431d8)
+
 
 * 큰제목: 문서 제목
     ```
