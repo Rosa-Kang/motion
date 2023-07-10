@@ -13,21 +13,16 @@
 
 # 2. Project Diagram
 
+* Project Diagram
+![project diagram](https://github.com/Rosa-Kang/motion/assets/49248131/b0d27e6d-3ef9-41b6-9c1b-15142fe81980)
 
 
-* 큰제목: 문서 제목
-    ```
-    This is an H1
-    =============
-    ```
-    This is an H1
-    =============
+* Useful Libraries:
+https://sortablejs.github.io/Sortable/
 
-* 작은제목: 문서 부제목
-    ```
-    This is an H2
-    -------------
-    ```
-    This is an H2
-    -------------
+https://github.com/haltu/muuri
+
+https://codepen.io/retrofuturistic/pen/tlbHE
+
+https://github.com/atlassian/react-beautiful-dnd
 
