@@ -43,16 +43,12 @@ class App{
         );
       
           // For demo :)
-    this.page.addChild(new ImageComponent('Image Title', 'https://picsum.photos/800/400'));
-    this.page.addChild(new VideoComponent('Video Title', 'https://youtu.be/D7cwvvA7cP0'));
-    this.page.addChild(new NoteComponent('Note Title', "Don't forget to code your dream"));
-    this.page.addChild(new TodoComponent('Todo Title', 'TypeScript Course!'));
-    this.page.addChild(new ImageComponent('Image Title', 'https://picsum.photos/800/400'));
-    this.page.addChild(new VideoComponent('Video Title', 'https://youtu.be/D7cwvvA7cP0'));
-    this.page.addChild(new NoteComponent('Note Title', "Don't forget to code your dream"));
-    this.page.addChild(new TodoComponent('Todo Title', 'TypeScript Course!'));
-
-
+    this.page.addChild(new ImageComponent('Imagine your peace and dream', 'https://picsum.photos/800/400'));
+    this.page.addChild(new VideoComponent('Morning Yoga for 20min', 'https://youtu.be/muxLhXweYF0'));
+    this.page.addChild(new NoteComponent('Today Todo', "Don't forget to code your dream"));
+      this.page.addChild(new ImageComponent('Stay Awake', 'https://picsum.photos/900/500'));
+    this.page.addChild(new VideoComponent('Why I get up 5am', 'https://youtu.be/U7eGCZAfDyU'));
+    this.page.addChild(new NoteComponent('Today Todo', "Don't forget to code your dream"));
     }
 
     private bindElementToDialog<T extends (MediaData | TextData) & Component>(

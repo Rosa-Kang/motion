@@ -161,4 +161,9 @@ export class PageComponent extends BaseComponent<HTMLUListElement> implements Co
     });
   }
 
-
+  private updateSections(state: 'mute' | 'unmute') {
+    this.children.forEach((section: SectionContainer) => {
+      section.muteChildren(state);
+    });
+  }
+}
